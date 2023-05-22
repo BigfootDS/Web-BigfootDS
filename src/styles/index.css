@@ -11,7 +11,12 @@ body {
   height: 100%;
   min-height: 100vh;
   margin: 0;
-  color: white;
+  color: var(--text);
+}
+
+#root {
+	width: 100vw;
+	height: 100vh;
 }
 
 code {
@@ -22,6 +27,7 @@ code {
 
 * {
 	margin: 0;
+	padding: 0;
 }
 
 
@@ -30,7 +36,57 @@ html {
   overflow-y: hidden;
 }
 
+.bg-primary {
+	background-color: var(--primary);
+}
+
+.bg-normal {
+	background-color: var(--normal);
+}
+
+.bg-white {
+	background-color: var(--white);
+}
+
+.bg-black {
+	background-color: var(--black);
+}
+
+
+
+.bg-light {
+	background-color: var(--light);
+}
+
+.bg-lighter {
+	background-color: var(--lighter);
+}
+
+.bg-lightest {
+	background-color: var(--lightest);
+}
 
 .bg-dark {
 	background-color: var(--dark);
+}
+
+.bg-darker {
+	background-color: var(--darker);
+}
+
+.bg-darkest {
+	background-color: var(--darkest);
+}
+
+.expand-to-parent-height {
+	height: 100%;
+}
+
+.expand-to-parent-width {
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: var(--text);
 }

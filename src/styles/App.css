@@ -1,11 +1,13 @@
-.column {
-	float: left;
+.appmain {
+	display:flex;
+	flex-wrap: nowrap;
+	height: 100vh;
 }
 
-.left {
-	width: 15%;
+.column.left { 
+	flex-grow: 1;
 }
 
-.right {
-	width: 85%;
+.column.right { 
+	flex-grow: 8;
 }

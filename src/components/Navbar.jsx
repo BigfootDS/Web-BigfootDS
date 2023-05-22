@@ -1,31 +1,61 @@
-import { useEffect } from "react"
-import { useAuth } from "../contexts/AuthContext";
-import { useProfile } from "../contexts/ProfileContext";
+
 import '../styles/Navbar.css';
-import { useThemeName, useThemeSelector } from "../contexts/ThemeContext";
+import { useThemeName } from "../contexts/ThemeContext";
+import BDSHeaderBlack from "../assets/images/BigfootDSHeader_Black_512.png";
+import BDSHeaderWhite from "../assets/images/BigfootDSHeader_White_512.png";
+import { Link, NavLink } from "react-router-dom";
+import AccountBar from './AccountBar';
+import ThemeBar from './ThemeBar';
+
+export default function Navbar(props) {
 
 
-export default function Navbar(props){
-
-	const auth = useAuth();
-	const profile = useProfile();
 	const theme = useThemeName();
-	const setTheme = useThemeSelector();
 
-	useEffect(() => {
-		console.log("Auth value is:\n" + JSON.stringify(auth))
-	},[auth]);
 
-	return(
-		<nav className="bg-dark">
-			<h1>BigfootDS</h1>
-			<h4>Active theme: {theme}</h4>
-			<button onClick={() => {setTheme("bds")}}>Set theme to BDS</button>
-			<button onClick={() => {setTheme("tbb")}}>Set theme to TBB</button>
-			{(auth.long || auth.short) && <h3>Logged in!</h3>}
-			{profile.displayName && 
-			<h3>{profile.displayName}</h3>
-			}
+
+	return (
+		<nav className="bg-light">
+			<header className="navheader">
+				<Link to="/">
+					<img src={theme === "bds" ? BDSHeaderWhite : BDSHeaderBlack} alt="The BigfootDS logo." />
+				</Link>
+			</header>
+			<div className="navmenu">
+				<ul>
+					<li>
+						<NavLink to="/" >
+							Home
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/about">
+							About
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/news">
+							News
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/games">
+							Games
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/account">
+							Account
+						</NavLink>
+					</li>
+					
+				</ul>
+			</div>
+			<div className='navwidgets'>
+				<AccountBar />
+				<ThemeBar />
+			</div>
+
 		</nav>
 	)
 }

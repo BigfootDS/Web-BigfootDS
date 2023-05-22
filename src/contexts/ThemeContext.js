@@ -3,9 +3,10 @@ import { useLocalStorage } from "react-use";
 
 let defaultTheme = "bds";
 
-const themes = {
+export const themes = {
 	bds: {
 		primary: "#1e6cb6",
+		text: "white",
 		white: "white",
 		black: "black",
 		lightest: "#bbdefb",
@@ -18,6 +19,7 @@ const themes = {
 	},
 	tbb: {
 		primary: "#ffc107",
+		text:"black",
 		white: "white",
 		black: "black",
 		lightest: "#f2e4bb",
