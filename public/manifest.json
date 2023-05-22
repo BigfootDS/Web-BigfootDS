@@ -1,0 +1,25 @@
+{
+  "short_name": "BigfootDS",
+  "name": "BigfootDS",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "BigfootDSLogo_256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "BigfootDSLogo_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1e6cb6",
+  "background_color": "#1a237e"
+}
