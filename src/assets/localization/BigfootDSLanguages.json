@@ -1,0 +1,18 @@
+{
+	"en": {
+		"home": "Home",
+		"about": "About",
+		"news": "News",
+		"games": "Games",
+		"account": "Account",
+		"logged_in": "Logged in!"
+	},
+	"fr": {
+		"home": "Maison",
+		"about": "À propos",
+		"news": "Nouvelles",
+		"games": "Jeux",
+		"account": "Compte",
+		"logged_in": "Connecté!"
+	}
+}

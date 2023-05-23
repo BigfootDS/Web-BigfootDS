@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocalStorage } from "react-use";
+
 
 let defaultLanguage = "en";
 
@@ -24,13 +26,12 @@ export default function LanguageProvider(props){
 	const [language, setLanguage] = useState(defaultLanguage);
 	const [languageStored, setLanguageStored] = useLocalStorage("language", defaultLanguage);
 	
+	const {t, i18n} = useTranslation();
 
 	const selectLanguage = (newLang) => {
-		if (languages.hasOwnProperty(newLang)){
+		if (Object.keys(i18n.services.resourceStore.data).includes(newLang)){
 			console.log("Setting theme to selection now.");
-			for (const value in languages[newLang]){
-				//document.documentElement.style.setProperty(`--${value}`, themes[newLang][value]);
-			}
+			i18n.changeLanguage(newLang);
 			return true;
 		} else {
 			console.log("Invalid language supplied. Doing nothing.");
@@ -42,6 +43,7 @@ export default function LanguageProvider(props){
 	// the browser's local storage and then applied to this global state.
 	useEffect(() => {
 		setLanguage(languageStored);
+		console.log("Available languages:\n" + Object.keys(i18n.services.resourceStore.data));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 

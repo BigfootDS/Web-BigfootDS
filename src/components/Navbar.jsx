@@ -6,12 +6,15 @@ import BDSHeaderWhite from "../assets/images/BigfootDSHeader_White_512.png";
 import { Link, NavLink } from "react-router-dom";
 import AccountBar from './AccountBar';
 import ThemeBar from './ThemeBar';
+import { useTranslation } from 'react-i18next';
+import LanguageBar from './LanguageBar';
 
 export default function Navbar(props) {
 
 
 	const theme = useThemeName();
 
+	const {t} = useTranslation();
 
 
 	return (
@@ -25,27 +28,27 @@ export default function Navbar(props) {
 				<ul>
 					<li>
 						<NavLink to="/" >
-							Home
+							{t('home')}
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="/about">
-							About
+							{t('about')}
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="/news">
-							News
+							{t('news')}
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="/games">
-							Games
+						{t('games')}
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="/account">
-							Account
+						{t('account')}
 						</NavLink>
 					</li>
 					
@@ -54,6 +57,7 @@ export default function Navbar(props) {
 			<div className='navwidgets'>
 				<AccountBar />
 				<ThemeBar />
+				<LanguageBar />
 			</div>
 
 		</nav>

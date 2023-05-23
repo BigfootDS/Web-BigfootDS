@@ -9,15 +9,21 @@ import {ProfileProvider } from './contexts/ProfileContext';
 import { BrowserRouter } from 'react-router-dom';
 import ThemeProvider from './contexts/ThemeContext';
 
+import './i18n';
+import LanguageProvider from './contexts/LanguageContext';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
 		<ProfileProvider>
 			<ThemeProvider>
-				<BrowserRouter>
-					<App />
-				</BrowserRouter>
+				<LanguageProvider>
+					<BrowserRouter>
+						<App />
+					</BrowserRouter>
+				</LanguageProvider>
 			</ThemeProvider>
 		</ProfileProvider>
 	</AuthProvider>
