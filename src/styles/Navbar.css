@@ -1,34 +1,36 @@
 nav {
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	height: 6vh;
-	padding: 0.5%;
+	width: 100vw;
 }
 
-nav > * {
-	height: 100%;
-}
+
 
 img, source {
 	width: auto;
 	height: 100%;
+	max-height: 75px;
 }
 
 
-.navmenu {
-	width: 50%;
+.navwidgets, .navmenu, .navheader {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-}
-
-.navheader {
-	display: flex;
-	align-items: center;
+	justify-content: space-evenly;
+	justify-items: center;
 	height: 100%;
+
 }
+
+.navwidgets > *,
+.navmenu > *,
+.navheader > * {
+	padding: 5px;
+}
+
+
 
 nav > header > a {
 	height: 100%;
@@ -39,7 +41,6 @@ nav > header > a {
 }
 
 .navmenu > ul {
-	width: 100%;
 	list-style: none;
 	display: flex;
 	justify-content: space-evenly;
@@ -48,15 +49,4 @@ nav > header > a {
 li {
 	background-color: var(--dark);
 	padding: 2%;
-}
-
-.navwidgets {
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	justify-items: center;
-}
-
-.navwidgets > * {
-	padding: 15px;
 }

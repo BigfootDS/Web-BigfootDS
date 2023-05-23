@@ -19,12 +19,12 @@ export default function Navbar(props) {
 
 	return (
 		<nav className="bg-light">
-			<header className="navheader">
+			<header className="navheader row">
 				<Link to="/">
 					<img src={theme === "bds" ? BDSHeaderWhite : BDSHeaderBlack} alt="The BigfootDS logo." />
 				</Link>
 			</header>
-			<div className="navmenu">
+			<div className="navmenu row">
 				<ul>
 					<li>
 						<NavLink to="/" >
@@ -54,7 +54,7 @@ export default function Navbar(props) {
 					
 				</ul>
 			</div>
-			<div className='navwidgets'>
+			<div className='navwidgets row'>
 				<AccountBar />
 				<ThemeBar />
 				<LanguageBar />

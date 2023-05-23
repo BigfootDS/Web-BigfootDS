@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { windowPWAPreventer } from "./pwaHelpers";
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import { Routes, Route, Link } from 'react-router-dom';
-import Login from './pages/Login';
+import { Routes, Route } from 'react-router-dom';
 import "./styles/App.css";
+import Account from './pages/Account';
+import SignUpForm from './components/SignUpForm';
+import LogInForm from './components/LogInForm';
 
 function App() {
 
@@ -13,13 +15,17 @@ function App() {
 	}, []);
 
 	return (
-		<div className='bg-normal expand-to-parent-height'>
-			<Navbar />
-			<div className='appmain bg-normal'>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/login" element={<Login />} />
-				</Routes>
+		<div className='flex-container bg-normal expand-to-parent-height'>
+			<Navbar/>
+			<div className='row appmain bg-normal'>
+				<div className='col-12'>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/account" element={<Account />} />
+						<Route path="/account/signup" element={<SignUpForm />} />
+						<Route path="/account/login" element={<LogInForm />} />
+					</Routes>
+				</div>
 			</div>
 
 		</div>

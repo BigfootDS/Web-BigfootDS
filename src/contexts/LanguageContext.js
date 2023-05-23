@@ -26,7 +26,7 @@ export default function LanguageProvider(props){
 	const [language, setLanguage] = useState(defaultLanguage);
 	const [languageStored, setLanguageStored] = useLocalStorage("language", defaultLanguage);
 	
-	const {t, i18n} = useTranslation();
+	const {i18n} = useTranslation();
 
 	const selectLanguage = (newLang) => {
 		if (Object.keys(i18n.services.resourceStore.data).includes(newLang)){

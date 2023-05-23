@@ -3,7 +3,7 @@ import { useLanguageName, useLanguageSelector } from "../contexts/LanguageContex
 
 export default function LanguageBar(props){
 
-	const { t, i18n } = useTranslation();
+	const { i18n } = useTranslation();
 
 	const activeLanguage = useLanguageName();
 	const setActiveLanguage = useLanguageSelector();
