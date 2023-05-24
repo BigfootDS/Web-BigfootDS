@@ -1,0 +1,17 @@
+.accountNotLoggedInPage {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+
+
+.accountNotLoggedInPage > div > a {
+	background-color: var(--darker);
+	padding: 50px;
+	margin: 15px;
+	text-align: center;
+	
+}

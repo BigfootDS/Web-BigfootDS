@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import "./styles/App.css";
 import Account from './pages/Account';
 import SignUpForm from './components/SignUpForm';
-import LogInForm from './components/LogInForm';
+import Login from './pages/Login';
 
 function App() {
 
@@ -18,12 +18,12 @@ function App() {
 		<div className='flex-container bg-normal expand-to-parent-height'>
 			<Navbar/>
 			<div className='row appmain bg-normal'>
-				<div className='col-12'>
+				<div className='column'>
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/account" element={<Account />} />
 						<Route path="/account/signup" element={<SignUpForm />} />
-						<Route path="/account/login" element={<LogInForm />} />
+						<Route path="/account/login" element={<Login />} />
 					</Routes>
 				</div>
 			</div>

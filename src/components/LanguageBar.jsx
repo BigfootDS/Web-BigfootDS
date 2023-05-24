@@ -13,7 +13,7 @@ export default function LanguageBar(props){
 	}
 
 	return (
-		<div style={{display:"flex"}}>
+		<div className="languagebar" >
 			<h1>🌎</h1>
 			<select value={activeLanguage} onChange={changeActiveLanguage}>
 				{Object.keys(i18n.services.resourceStore.data).map((theme) => {

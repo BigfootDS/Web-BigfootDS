@@ -5,7 +5,11 @@
 		"news": "News",
 		"games": "Games",
 		"account": "Account",
-		"logged_in": "Logged in!"
+		"logged_in": "Logged in!",
+		"btn_create_new_account": "Create a new account",
+		"btn_log_in": "Log in to your existing account",
+		"label_email": "Email",
+		"label_password": "Password"
 	},
 	"fr": {
 		"home": "Maison",
@@ -13,6 +17,10 @@
 		"news": "Nouvelles",
 		"games": "Jeux",
 		"account": "Compte",
-		"logged_in": "Connecté!"
+		"logged_in": "Connecté!",
+		"btn_create_new_account": "Créer un nouveau compte",
+		"btn_log_in": "Connectez-vous à votre compte existant",
+		"label_email": "E-mail",
+		"label_password": "Mot de passe"
 	}
 }

@@ -1,0 +1,64 @@
+
+.loginPage {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+form {
+	background-color: var(--darker);
+	margin: 5%;
+}
+
+form > * {
+	padding: 5%;
+}
+
+.row > button {
+	width: 100%;
+}
+
+
+.otpForm, .socialAuthForm {
+	background-color: var(--lighter);
+}
+
+.emailPassForm {
+	order: 1;
+}
+.otpForm {
+	order: 2;
+}
+.socialAuthForm {
+	order: 3;
+}
+
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+
+	.emailPassForm {
+		order: 2;
+	}
+	.otpForm {
+		order: 1;
+	}
+	.socialAuthForm {
+		order: 3;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	/* For desktop: */
+
+	.emailPassForm {
+		order: 2;
+	}
+	.otpForm {
+		order: 1;
+	}
+	.socialAuthForm {
+		order: 3;
+	}
+}

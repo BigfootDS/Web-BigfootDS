@@ -8,8 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  min-height: 100vh;
+
   margin: 0;
   color: var(--text);
 }
@@ -34,7 +33,6 @@ code {
 
 html {
   min-height: 100vh;
-  overflow-y: hidden;
 }
 
 .bg-primary {

@@ -1,11 +1,13 @@
 import { useAuth, useAuthDispatch } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-
+import "../styles/Account.css";
+import { useTranslation } from "react-i18next";
 
 export default function Account(props){
 	const authData = useAuth();
 	const authDispatch = useAuthDispatch();
 	const navigate = useNavigate();
+	const {t} = useTranslation();
 
 	const logOutRequest = () => {
 		authDispatch({type:"logout"});
@@ -15,7 +17,7 @@ export default function Account(props){
 	return(
 		<div>
 			{(authData?.long || authData?.short) ? 
-			<div className="accountPage">
+			<div className="accountPage row">
 				<h1>Logged in!</h1>
 				{/* Manage profile info */}
 
@@ -25,9 +27,18 @@ export default function Account(props){
 				<button onClick={logOutRequest}>Log out</button>
 			</div>
 			:
-			<div className="accountNotLoggedInPage">
-				<Link to="/account/signup" >Create a new account</Link>
-				<Link to="/account/login" >Log in to your existing account</Link>
+			<div className="accountNotLoggedInPage row">
+				<div className="column">
+
+				</div>
+				<div className="column">
+					<Link to="/account/signup" >{t("btn_create_new_account")}</Link>
+					<Link to="/account/login" >{t("btn_log_in")}</Link>
+				</div>
+				<div className="column">
+
+				</div>
+				
 			</div>
 			}
 		</div>

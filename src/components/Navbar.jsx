@@ -14,17 +14,19 @@ export default function Navbar(props) {
 
 	const theme = useThemeName();
 
-	const {t} = useTranslation();
+	const { t } = useTranslation();
 
 
 	return (
-		<nav className="bg-light">
-			<header className="navheader row">
+		<nav className="row bg-light">
+			<div className='column navheader'>
 				<Link to="/">
-					<img src={theme === "bds" ? BDSHeaderWhite : BDSHeaderBlack} alt="The BigfootDS logo." />
+					<img className='companyHeader' src={theme === "bds" ? BDSHeaderWhite : BDSHeaderBlack} alt="The BigfootDS logo." />
 				</Link>
-			</header>
-			<div className="navmenu row">
+			</div>
+
+
+			<div className="column navmenu">
 				<ul>
 					<li>
 						<NavLink to="/" >
@@ -43,21 +45,31 @@ export default function Navbar(props) {
 					</li>
 					<li>
 						<NavLink to="/games">
-						{t('games')}
+							{t('games')}
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to="/account">
-						{t('account')}
+							{t('account')}
 						</NavLink>
 					</li>
-					
+
 				</ul>
 			</div>
-			<div className='navwidgets row'>
-				<AccountBar />
-				<ThemeBar />
-				<LanguageBar />
+
+
+			<div className='column navwidgets'>
+				<div className='row'>
+					<div className='column'>
+						<AccountBar />
+					</div>
+					<div className='column'>
+						<ThemeBar />
+					</div>
+					<div className='column'>
+						<LanguageBar />
+					</div>
+				</div>
 			</div>
 
 		</nav>

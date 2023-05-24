@@ -18,7 +18,7 @@ export default function AccountBar(props){
 	},[auth]);
 
 	return (
-		<div>
+		<div className="accountbar">
 			<div>
 				{(auth.long || auth.short) && <h3>{t("logged_in")}</h3>}
 			</div>

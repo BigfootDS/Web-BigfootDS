@@ -10,7 +10,7 @@ export default function ThemeBar(props){
 	}
 
 	return (
-		<div style={{display:"flex"}}>
+		<div className="themebar" >
 			<h1>🎨</h1>
 			<select value={theme} onChange={changeTheme}>
 				{themeOptions.map((theme) => {
