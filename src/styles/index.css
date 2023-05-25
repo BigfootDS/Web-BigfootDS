@@ -1,16 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  margin: 0;
-  color: var(--text);
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	color: var(--text);
 }
 
 #root {
@@ -19,20 +17,19 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
-
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	overflow: auto;
 }
 
-
 html {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 .bg-primary {
@@ -50,8 +47,6 @@ html {
 .bg-black {
 	background-color: var(--black);
 }
-
-
 
 .bg-light {
 	background-color: var(--light);
@@ -78,11 +73,11 @@ html {
 }
 
 .expand-to-parent-height {
-	height: 100%;
+	min-height: 100%;
 }
 
 .expand-to-parent-width {
-	width: 100%;
+	min-width: 100%;
 }
 
 a {

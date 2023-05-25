@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useLocalStorage } from "react-use";
+import useAsyncReducer from "../utils/useAsyncReducer";
 
 let defaultAuthValues = {
 	short:'',
@@ -17,7 +18,7 @@ export function useAuthDispatch(){
 	return useContext(AuthDispatchContext);
 }
 
-function authReducer(auth, action){
+async function authReducer(auth, action){
 	switch(action.type){
 		case 'setShort':{
 			auth.short = action.jwt;
@@ -28,10 +29,21 @@ function authReducer(auth, action){
 			return auth;
 		}
 		case 'login':{
-			return {
-				long: action.data.long,
-				short: action.data.short
-			};
+
+			let loginResult = await fetch("https://auth.bigfootds.dev/users/login", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+
+				},
+				body: JSON.stringify({email: action.data.email, password: action.data.password})
+			}).then((response) => response.json());
+			if (loginResult.tokens){
+				return loginResult.tokens;
+			} else {
+				return defaultAuthValues;
+			}
+			
 		}
 		case 'logout':{
 			return defaultAuthValues;
@@ -50,7 +62,7 @@ export function AuthProvider({ children }){
 		return authStored || defaultAuthValues;
 	}
 
-	const [auth, dispatch] = useReducer(
+	const [auth, dispatch] = useAsyncReducer(
 		authReducer,
 		initializer
 	);

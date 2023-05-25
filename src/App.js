@@ -7,6 +7,7 @@ import "./styles/App.css";
 import Account from './pages/Account';
 import SignUpForm from './components/SignUpForm';
 import Login from './pages/Login';
+import AboutUs from './pages/AboutUs';
 
 function App() {
 
@@ -21,6 +22,10 @@ function App() {
 				<div className='column'>
 					<Routes>
 						<Route path="/" element={<Home />} />
+						{/* Static pages, no cool interactivity or dynamic content: */}
+						<Route path="/about" element={<AboutUs />} />
+
+						{/* Dynamic pages: */}
 						<Route path="/account" element={<Account />} />
 						<Route path="/account/signup" element={<SignUpForm />} />
 						<Route path="/account/login" element={<Login />} />

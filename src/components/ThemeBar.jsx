@@ -13,8 +13,8 @@ export default function ThemeBar(props){
 		<div className="themebar" >
 			<h1>🎨</h1>
 			<select value={theme} onChange={changeTheme}>
-				{themeOptions.map((theme) => {
-					return <option key={theme} value={theme}>{theme.toLocaleUpperCase()}</option>
+				{themeOptions.map((themeOption) => {
+					return <option key={themeOption} value={themeOption}>{themeOption.toLocaleUpperCase()}</option>
 				})}
 			</select>
 		</div>

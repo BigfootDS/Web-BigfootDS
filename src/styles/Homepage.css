@@ -1,0 +1,42 @@
+.homeContainer {
+	min-height: 100%;
+	padding: 5%;
+	box-sizing: border-box;
+
+}
+
+
+.homeContent {
+	background-color: var(--dark);
+	min-height: 100%;
+	padding: 2%;
+	box-sizing: border-box;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+
+}
+
+@media only screen and (min-width: 768px) {
+	/* For desktop: */
+
+	.homeContent {
+		padding: 1%;
+	}
+
+	.aboutBrief {
+		line-height: 300%;
+		text-align: center;
+	}
+	
+
+	.aboutHistory > p,
+	.aboutServices > p {
+		max-width: 70%;
+		padding: 1%;
+		padding-bottom: 1%;
+	}
+}

@@ -16,8 +16,8 @@ export default function LanguageBar(props){
 		<div className="languagebar" >
 			<h1>🌎</h1>
 			<select value={activeLanguage} onChange={changeActiveLanguage}>
-				{Object.keys(i18n.services.resourceStore.data).map((theme) => {
-					return <option key={theme} value={theme}>{theme.toLocaleUpperCase()}</option>
+				{Object.keys(i18n.services.resourceStore.data).map((lang) => {
+					return <option key={lang} value={lang}>{lang.toLocaleUpperCase()}</option>
 				})}
 			</select>
 		</div>

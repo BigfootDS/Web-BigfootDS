@@ -24,24 +24,16 @@ export default function LogInForm(props){
 		setPassword(event.target.value);
 	}
 
-	const handleFormSubmit = async (event) => {
+	const handleFormSubmit = (event) => {
 		event.preventDefault();
 		console.log("Form submitted!");
 
-		let loginResult = await fetch("https://auth.bigfootds.dev/users/login", {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-
-				},
-				body: JSON.stringify({email: email, password: password})
-			}).then((response) => response.json());
-
-		console.log(loginResult);
-
 		authDispatch({
 			type: 'login',
-			data: loginResult.tokens
+			data: {
+				email: email,
+				password: password
+			}
 		})
 	}
 
