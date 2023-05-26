@@ -27,7 +27,8 @@ picture > source {
 }
 
 
-.gameInfoCard > span {
+.gameInfoCard > span,
+.gameInfoCard > .dangerousDiv {
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
 }

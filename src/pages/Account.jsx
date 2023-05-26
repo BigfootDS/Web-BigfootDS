@@ -2,6 +2,7 @@ import { useAuth, useAuthDispatch } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Account.css";
 import { useTranslation } from "react-i18next";
+import AccountCardParent from "../components/AccountCardParent";
 
 export default function Account(props){
 	const authData = useAuth();
@@ -18,13 +19,26 @@ export default function Account(props){
 		<div>
 			{(authData?.long || authData?.short) ? 
 			<div className="accountPage row">
-				<h1>Logged in!</h1>
-				{/* Manage profile info */}
+				
+				<div className="column">
 
-				{/* Manage OTP */}
+				</div>
+				
+				<div className="column">
 
-				{/* Provide a logout option */}
-				<button onClick={logOutRequest}>Log out</button>
+					{/* Manage profile info */}
+					<AccountCardParent />
+
+					{/* Manage OTP */}
+
+
+					{/* Provide a logout option */}
+					<button onClick={logOutRequest}>Log out</button>
+				</div>
+				
+				<div className="column">
+
+				</div>
 			</div>
 			:
 			<div className="accountNotLoggedInPage row">

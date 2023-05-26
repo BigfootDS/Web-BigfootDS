@@ -19,7 +19,9 @@ export default function GameQuickInfoCard(props) {
 	return (
 		<section className={"gameInfoCard " + gameAbbreviation}>
 			{(ytIframeString && isProd()) ? 
-			ytIframeString
+			<div className="dangerousDiv" dangerouslySetInnerHTML={{__html:ytIframeString}}>
+
+			</div>
 			:
 			<picture>
 			<source />
