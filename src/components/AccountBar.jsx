@@ -13,16 +13,16 @@ export default function AccountBar(props){
 
 	const {t} = useTranslation();
 
-	useEffect(() => {
-		console.log("Auth value is:\n" + JSON.stringify(auth))
-	},[auth]);
+
 
 	return (
 		<div className="accountbar">
 			<div>
+				{/* TODO: Remove this and rely solely on the profile.displayName. */}
 				{(auth.long || auth.short) && <h3>{t("logged_in")}</h3>}
 			</div>
 			<div>
+				{/* TODO: MS-Accounts not yet deployed, this data won't show. */}
 				{profile.displayName && <h3>{profile.displayName}</h3>}
 			</div>
 		</div>

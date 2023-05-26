@@ -1,6 +1,7 @@
 .gameInfoCard {
 	background-color: var(--light);
 	margin: 2%;
+	padding: 2%;
 	display: flex;
 	flex-direction: column;
 }
@@ -14,6 +15,15 @@ picture {
 	min-height: 25vh;
 	aspect-ratio: 16 / 9;
 	background-color: var(--lighter);
+	overflow: hidden;
+}
+
+picture > img,
+picture > source {
+	object-fit: contain;
+	object-position: center;
+	height: 100%;
+	width: 100%;
 }
 
 

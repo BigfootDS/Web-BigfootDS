@@ -19,14 +19,32 @@ export function useAuthDispatch(){
 }
 
 async function authReducer(auth, action){
+	let authStateEditable = {...auth}
 	switch(action.type){
 		case 'setShort':{
-			auth.short = action.jwt;
-			return auth;
+			authStateEditable.short = action.jwt;
+			return authStateEditable;
 		}
 		case 'setLong':{
-			auth.long = action.jwt;
-			return auth;
+			authStateEditable.long = action.jwt;
+			return authStateEditable;
+		}
+		case 'register':{
+			
+			let signUpResult = await fetch("https://auth.bigfootds.dev/users/signup", {
+				method: "POST",
+				headers: {
+					'Content-Type':"application/json"
+				},
+				body: JSON.stringify({email: action.data.email, password: action.data.password})
+			}).then((response) =>  response.json());
+			console.log(signUpResult);
+			if (signUpResult.tokens){
+				return signUpResult.tokens;
+			} else {
+				return defaultAuthValues;
+			}
+
 		}
 		case 'login':{
 
@@ -69,10 +87,13 @@ export function AuthProvider({ children }){
 
 	// On app boot, set the auth state to the localStorage value
 	useEffect(() => {
-		dispatch({
-			type:'login',
-			data: authStored
-		})
+		if (authStored.long || authStored.short){
+			console.log("User session found on this device, refreshing it now.");
+			dispatch({
+				type:'login',
+				data: authStored
+			})
+		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[]);
 

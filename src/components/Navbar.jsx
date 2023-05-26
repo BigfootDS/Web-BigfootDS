@@ -38,11 +38,11 @@ export default function Navbar(props) {
 							{t('about')}
 						</NavLink>
 					</li>
-					<li>
+					{/* <li>
 						<NavLink to="/news">
 							{t('news')}
 						</NavLink>
-					</li>
+					</li> */}
 					<li>
 						<NavLink to="/games">
 							{t('games')}

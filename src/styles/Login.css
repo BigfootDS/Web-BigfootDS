@@ -1,10 +1,23 @@
 
 .loginPage {
+	padding: 5%;
+	height: 100%;
+	border: 0;
+}
+
+.loginPage > .row {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	height: 100%;
+}
+
+
+
+.column > h1 {
+	background-color: var(--lighter);
+	border: 0;
+	padding: 2%;
 }
 
 form {

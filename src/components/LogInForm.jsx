@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth, useAuthDispatch } from "../contexts/AuthContext"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 
@@ -37,9 +37,14 @@ export default function LogInForm(props){
 		})
 	}
 
+	useEffect(() => {
+		if (authData.long || authData.short) {
+			navigate("/account");
+		}
+	}, [authData, navigate]);
+
 	return(
 		<div className="logInForm bg-lighter">
-			{authData?.long && navigate("/account")}
 			<form onSubmit={handleFormSubmit}>
 						<div className="row">
 							<div className="column">

@@ -5,9 +5,11 @@ import Home from './pages/Home';
 import { Routes, Route } from 'react-router-dom';
 import "./styles/App.css";
 import Account from './pages/Account';
-import SignUpForm from './components/SignUpForm';
 import Login from './pages/Login';
 import AboutUs from './pages/AboutUs';
+import News from './pages/News';
+import GamesBrief from './components/GamesBrief';
+import SignUp from './pages/SignUp';
 
 function App() {
 
@@ -24,11 +26,14 @@ function App() {
 						<Route path="/" element={<Home />} />
 						{/* Static pages, no cool interactivity or dynamic content: */}
 						<Route path="/about" element={<AboutUs />} />
+						<Route path="/games" element={<GamesBrief />} />
 
 						{/* Dynamic pages: */}
 						<Route path="/account" element={<Account />} />
-						<Route path="/account/signup" element={<SignUpForm />} />
+						<Route path="/account/signup" element={<SignUp />} />
 						<Route path="/account/login" element={<Login />} />
+
+						<Route path="/news" element={<News />} />
 					</Routes>
 				</div>
 			</div>
