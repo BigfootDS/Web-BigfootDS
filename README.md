@@ -149,3 +149,40 @@ sequenceDiagram
 	News-DB-->>MS-News: DB operation result
 	MS-News-->>Front-End: Submission result
 ```
+
+
+## Localisation
+
+The website features translated content, with plans to do more-thorough localisation when appropriate in future.
+
+This is done through numerous steps:
+
+1. Create a Google Sheet with each string of content as a new row item.
+2. Use a Google Sheet cell formula to automatically translate the English string into another language, with manual translation done if the automatic translation isn't suitable (manual translation removes the formula from the cell though!).
+3. Use a Google Sheet sheet formula to transpose the easy-to-manage data sheet into an easy-to-process data sheet.
+4. Use a Google Sheet extension "Export Sheet Data" to periodically generate JSON data based on the transposed data sheet, as the transposed data converts into a usable JSON structure for the React app.
+5. Use `react-i18next` to implement the JSON data throughout the React app.
+
+Screenshot is best viewed at fullscreen, as it shows:
+- the formula for translating a cell automatically
+- the settings used in the "Export Sheet Data" extension
+- the syntax and layout of the easy-to-manage data sheet
+
+![A screenshot of a Google Sheets webpage.](./docs/GoogleSheetsTranslations001.png)
+
+Screenshot shows the transposed data sheet, which is the target used in the "Export Sheet Data" extension. Note the cell formula, transposing the "Master" sheet.
+
+![A screenshot of a Google Sheets webpage.](./docs/GoogleSheetsTranslations002.png)
+
+To see how the `react-i18next` implementation is performed, please explore these files:
+
+- to see the stored JSON data structure:
+	- [./src/assets/localization/BigfootDSLanguages.json](./src/assets/localization/BigfootDSLanguages.json)
+- to establish correct i18n configuration to load the above JSON data:
+	- [./src/i18n.js](./src/i18n.js)
+- to establish app-wide access to language selection system:
+	- [./src/contexts/LanguageContext.js](./src/contexts/LanguageContext.js)
+- to establish UI for language selection
+	- [./src/components/LanguageBar.jsx](./src/components/LanguageBar.jsx)
+- to see how translated content is implemented in a contente-heavy component
+	- [./src/pages/AboutUs.jsx](./src/pages/AboutUs.jsx)
