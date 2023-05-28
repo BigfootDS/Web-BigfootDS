@@ -265,17 +265,17 @@ This project uses GitHub Actions to automatically deploy the ReactJS app to a li
 
 - [.github/workflows/cd.yml](.github/workflows/cd.yml)
 
-The repository is set up to "Deploy from a branch" using the `gh-pages` branch, making its contents publicly accessible through the GitHub Pages web hosting system.
+The repository is set up to deploy via a GitHub Actions workflow, so that the `cd.yml` can easily push its built ReactJS app to the GitHub Pages system.
 
 The GitHub Pages system for this repository is also configured with custom domain name usage.
 
 - [https://web-staging.bigfootds.dev/](https://web-staging.bigfootds.dev/)
 
-Technically, the web app is also available on the default GitHub Pages URL, but it does not work on that URL since it needs additional ReactJS configuration.
+The screenshot below shows the settings as of May 2023, using the new "GitHub Actions" source as its deployment option.
 
-- [https://bigfootds.github.io/Web-BigfootDS/](https://bigfootds.github.io/Web-BigfootDS/)
+![A screenshot of a GitHub repository's settings page for GitHub Pages-related settings.](./docs/GHP_001.png)
 
-Because that URL hosts the app in a subdirectory or route (the "Web-BigfootDS" part), the React app breaks - default ReactJS app settings expects the ReactJS app to be hosted at the root of a domain name.
+Additional settings may be required for you to change if you were to implement this yourself; I have some organisation-wide settings configured in my organisation "BigfootDS" on GitHub, and the GitHub Actions system is constantly updating so instructions from a month or two ago may not work for you!
 
 Due to GitHub Pages limitations as of May 2023, it's not possible to make a GitHub Pages website available on multiple custom domains. Additional work will be needed to move this website from "web-staging.bigfootds.dev" to "bigfootds.com" when the time for that comes along. Of course, we could just skip a staging domain entirely and push straight to "bigfootds.com" - but the new website isn't feature-ready enough for that yet.
 
@@ -287,6 +287,7 @@ Screenshot shows two back-ends hosted on other subdomains, hosted in Google Clou
 
 ![A screenshot of a table of DNS records.](./docs/GoogleDomainsDNSTable001.png)
 
+A `CNAME` file must be added to the `public` folder of the ReactJS app, as GitHub Pages needs a confirmation within the repository about which domain it needs as well. 
 
 ## Other
 

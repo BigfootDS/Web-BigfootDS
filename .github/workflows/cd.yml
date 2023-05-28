@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   build:
-    
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -36,7 +36,7 @@ jobs:
         env:
           CI: true
       
-      - name: Log build directory
+      - name: Log build directory as a sanity check
         run: find -maxdepth 2 -type d -name 'build'
 
       - name: Setup Pages
