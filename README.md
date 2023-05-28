@@ -2,11 +2,21 @@
 
 A single-page application made in ReactJS.
 
-Data fetched from various BigfootDS microservices.
+Data fetched from various BigfootDS microservices (ExpressJS servers!).
 
 - Translation (& hopefully localisation) via [react-18next](https://react.i18next.com/guides/quick-start)
 - SPA routing via [React Router](https://reactrouter.com/en/main/start/tutorial)
 - Local storage via [react-use](https://github.com/streamich/react-use)
+
+## Table of Contents
+
+1. [Purpose](#purpose)
+2. [Pages](#pages)
+3. [Contexts](#contexts)
+4. [Security](#security)
+5. [Localisation](#localisation)
+6. [Deployment](#deployment)
+
 
 ## Purpose
 
