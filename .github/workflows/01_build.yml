@@ -35,6 +35,6 @@ jobs:
   call_deploy_workflow:
     needs: build
     name: Deploy the built app
-    uses: ./github/workflows/02_deploy.yml
+    uses: ./.github/workflows/02_deploy.yml
     secrets: inherit
     
