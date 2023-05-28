@@ -24,17 +24,17 @@ jobs:
         env:
           CI: true
       
-      - name: Push build to gh-pages branch
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: gh-pages
-          FOLDER: build
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-  call_deploy_workflow:
-    needs: build
-    name: Deploy the built app
-    uses: ./.github/workflows/02_deploy.yml
-    secrets: inherit
+      - name: Log build directory
+        run: find -maxdepth 2 -type d -name 'build'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload ReactJS build folder
+          path: './build'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
     
