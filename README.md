@@ -29,9 +29,9 @@ Purpose of the repo: education!
 
 Purpose of the web-app: business!
 
-I need a web client for the back-ends that I'm building so that my customers (of my videogames) can do appropriate things with their game data.
+I need a web client for the back-ends that I'm building so that my customers (of my videogames) can do appropriate things with their user data and game data.
 
-Since I'm a full-time teacher (not a full-time game developer), building this as a classroom example means that:
+Building this as a classroom example means that:
 
 1. I can create time to work on this thing.
 2. I can show students some cool functionalities and ways of working.
