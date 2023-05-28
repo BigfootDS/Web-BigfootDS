@@ -1,4 +1,3 @@
-import TBB_Steam_MainCapsule from "./images/TBB-Steam-MainCapsule.png";
 import TBB_Switch_CoverArt from "./images/GameLogoSwitch-01.png";
 
 const data = {

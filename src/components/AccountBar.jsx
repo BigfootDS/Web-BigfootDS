@@ -1,7 +1,6 @@
 // This is not the full "Account" page found on "/account", 
 // this is just the widget in the navbar!
 
-import { useEffect } from "react"
 import { useAuth } from "../contexts/AuthContext";
 import { useProfile } from "../contexts/ProfileContext";
 import { useTranslation } from "react-i18next";
