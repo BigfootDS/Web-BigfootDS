@@ -8,6 +8,21 @@ Data fetched from various BigfootDS microservices.
 - SPA routing via [React Router](https://reactrouter.com/en/main/start/tutorial)
 - Local storage via [react-use](https://github.com/streamich/react-use)
 
+## Purpose
+
+Purpose of the repo: education!
+
+Purpose of the web-app: business!
+
+I need a web client for the back-ends that I'm building so that my customers (of my videogames) can do appropriate things with their game data.
+
+Since I'm a full-time teacher (not a full-time game developer), building this as a classroom example means that:
+
+1. I can create time to work on this thing.
+2. I can show students some cool functionalities and ways of working.
+
+The repository of this front-end web-app is publicly visible since it holds no API keys or other sensitive data - the back-end servers / microservices will remain private though, as they do have keys and security logic that would become useless if it were public. White-label projects of the back-ends will be made during classes, it's really not special - but things like the JWT decryption keys cannot be shared.
+
 ## Pages
 
 The routes accessible across the front-end application.
@@ -33,7 +48,7 @@ Basically a static page.
 
 ### /news
 
-TODO! Low-priority.
+** NOT YET IMPLEMENTED **
 
 Should pull posts from the MS-News microservice.
 Read-only for all but the admin users, who can do full CRUD on the website to manage and create news posts.
@@ -42,6 +57,8 @@ Interacts with MS-News.
 
 
 ### /account/:userId
+
+** NOT YET IMPLEMENTED **
 
 Page to view account data.
 Contains data from a combination of microservices, so this page must contain distinct components for those.
@@ -61,12 +78,14 @@ The back-end also has logic to prevent unauthorized edits, so the above logic is
 
 ### /account/:userId/:profileId/edit
 
+** NOT YET IMPLEMENTED **
+
 Shows profile CRUD form.
 
 Interacts with MS-Accounts.
 
 
-### /account/register
+### /account/signup
 
 Shows the auth register form.
 
@@ -106,6 +125,7 @@ For example, editing a user's email address would require both a short-lived JWT
 
 For example, viewing a different user's data would require no JWT but does require a body of data including a target user ID.
 
+
 ### ProfileContext
 
 Data and CRUD interactivity with the MS-Accounts microservice.
@@ -117,13 +137,47 @@ Manages profile data specified by routes in the front-end application, basically
 Most actions will require a valid JWT as well as profile-related body data, which the MS-Accounts microservice will automatically validate with MS-Auth.
 
 
-
 ### ThemeContext
 
+The context itself just stores the name of the active theme, but the provider component of this context interacts with predefined, hardcoded objects that match those names and applies their values to the HTML document.
+
+By using this context data to change CSS variables, we can set an active theme to the website. However, all CSS related to colours must use only those CSS variables - if it's not a variable, it won't be affected by the theme system.
+
+The `ThemeBar` component just provides a way to read and change the name of the active theme, but it has no awareness of the CSS colours or theme data beyond that. All of the good stuff happens in the context file.
+
+Context file here:
+- [src/contexts/ThemeContext.js](./src/contexts/ThemeContext.js)
+
+Example of CSS usage:
+
+```css
+.gameInfoCard {
+	background-color: var(--light);
+	margin: 2%;
+	padding: 2%;
+	display: flex;
+	flex-direction: column;
+}
+```
 
 ### LanguageContext
 
+This context system relies heavily on the [react-i18next](https://react.i18next.com/guides/quick-start) NPM package. It's a fantastic package and makes localisation really straightforward to work through.
 
+The default data of this context is irrelevant, as the i18n system will apply itself to the app as early as possible with all relevant data instead. So, this context system is really just a way for us to interact with the `i18n` system - specifically, to read the active language and change the active language at runtime.
+
+Context file here:
+- [src/contexts/LanguageContext.js](./src/contexts/LanguageContext.js)
+
+Some notable code related to this system:
+
+- To know which languages are localised by the app, we read the data from `Object.keys(i18n.services.resourceStore.data)` -- the array returned by `Object.keys()` is an array of ISO 639-1 language identifiers such as "en" for "English" and "fr" for "French".
+
+- The `LanguageBar` component just changes which ISO 639-1 identifier is set as `i18n`'s active language. The `i18n` system automatically handles language resource swapping based on that value.
+
+- The rest of the app - meaning, everything that isn't the `LanguageBar` does not interact with this context system. It interacts with the `i18n` system instead, as it provides hooks to translate content for the React app to use.
+
+You can read more about how this app uses the `i18n` system in the [Localisation](#localisation) section below.
 
 ## Security
 
@@ -186,3 +240,26 @@ To see how the `react-i18next` implementation is performed, please explore these
 	- [./src/components/LanguageBar.jsx](./src/components/LanguageBar.jsx)
 - to see how translated content is implemented in a contente-heavy component
 	- [./src/pages/AboutUs.jsx](./src/pages/AboutUs.jsx)
+
+
+
+
+## Deployment
+
+This project uses GitHub Actions to automatically deploy the ReactJS app to a live domain. You can view the workflow file here:
+
+- [.github/workflows/cd.yml](.github/workflows/cd.yml)
+
+The repository is set up to "Deploy from a branch" using the `gh-pages` branch, making its contents publicly accessible through the GitHub Pages web hosting system.
+
+The GitHub Pages system for this repository is also configured with custom domain name usage.
+
+- [https://web-staging.bigfootds.dev/](https://web-staging.bigfootds.dev/)
+
+Technically, the web app is also available on the default GitHub Pages URL, but it does not work on that URL since it needs additional ReactJS configuration.
+
+- [https://bigfootds.github.io/Web-BigfootDS/](https://bigfootds.github.io/Web-BigfootDS/)
+
+Because that URL hosts the app in a subdirectory or route (the "Web-BigfootDS" part), the React app breaks - default ReactJS app settings expects the ReactJS app to be hosted at the root of a domain name.
+
+Due to GitHub Pages limitations as of May 2023, it's not possible to make a GitHub Pages website available on multiple custom domains. Additional work will be needed to move this website from "web-staging.bigfootds.dev" to "bigfootds.com" when the time for that comes along. Of course, we could just skip a staging domain entirely and push straight to "bigfootds.com" - but the new website isn't feature-ready enough for that yet.
