@@ -8,6 +8,10 @@ Data fetched from various BigfootDS microservices (ExpressJS servers!).
 - SPA routing via [React Router](https://reactrouter.com/en/main/start/tutorial)
 - Local storage via [react-use](https://github.com/streamich/react-use)
 
+Deployed to:
+
+- [web-staging.bigfootds.dev](https://web-staging.bigfootds.dev/)
+
 ## Table of Contents
 
 1. [Purpose](#purpose)
@@ -16,6 +20,7 @@ Data fetched from various BigfootDS microservices (ExpressJS servers!).
 4. [Security](#security)
 5. [Localisation](#localisation)
 6. [Deployment](#deployment)
+7. [Other](#other)
 
 
 ## Purpose
@@ -273,3 +278,71 @@ Technically, the web app is also available on the default GitHub Pages URL, but 
 Because that URL hosts the app in a subdirectory or route (the "Web-BigfootDS" part), the React app breaks - default ReactJS app settings expects the ReactJS app to be hosted at the root of a domain name.
 
 Due to GitHub Pages limitations as of May 2023, it's not possible to make a GitHub Pages website available on multiple custom domains. Additional work will be needed to move this website from "web-staging.bigfootds.dev" to "bigfootds.com" when the time for that comes along. Of course, we could just skip a staging domain entirely and push straight to "bigfootds.com" - but the new website isn't feature-ready enough for that yet.
+
+My domains are all managed via Google Domains, and custom domain name configuration is just a matter of editing DNS records for a specific domain.
+
+So, for my `bigfootds.dev` domain, I created subdomains by creating DNS records that use `someValue.bigfootds.dev` as the host name. `CNAME` records are the required type, with the `Data` matching whatever the deployment platform says to enter. For GitHub Pages, that means `organisation.github.io` or `username.github.io` - it automatically figures out which repository to feed to the custom domain name.
+
+Screenshot shows two back-ends hosted on other subdomains, hosted in Google Cloud Platform - for the sake of comparison only. This repository is deployed to `web-staging.bigfootds.dev` specifically.
+
+![A screenshot of a table of DNS records.](./docs/GoogleDomainsDNSTable001.png)
+
+
+## Other
+
+### Environment-specific components
+
+Some components in the app become less-useful if they're used while developing. Specifically, an embedded YouTube video -- any analytics from that video are hampered by every hot-reload of the ReactJS app. So, to make sure the YouTube data stays good & useful, we just do some conditional code to only show the video embed if the ReactJS app is running in production.
+
+The logic for that conditional check is handled in some plain NodeJS functions, not JSX.
+
+- [utils/environmentDetector.js](./src/utils/environmentDetector.js)
+
+
+### Async reducers
+
+This is supposedly a bad, impure thing to do in ReactJS. But it's so dang useful!
+
+Using async reducers allows us to do things like make API calls from the reducer logic. By putting API calls inside reducers, we can keep our code D.R.Y -- no need to write API calls to do CRUD actions to a user account in each different user-related component, just do the API calls from the globally-available reducer.
+
+Admittedly, this is not code that I created - it's available here:
+
+- [Scott Wager's comment with the code](https://gist.github.com/astoilkov/013c513e33fe95fa8846348038d8fe42?permalink_comment_id=3353464#gistcomment-3353464)
+
+The GitHub Gist discussion about this feature begins in early 2019, and no modern solution that is officially standard in the React library exists (or at least, is not easy to find or learn). So, the `useAsyncReducer` hook is a nifty little workaround with a big impact until something better comes along.
+
+
+### Progressive web app
+
+This is kinda hard to talk about these days as progressive web apps (PWAs) have struggled to gain traction in the world. For a long while, ReactJS included functionality that you could toggle with one line of code to turn your website into a PWA. 
+
+PWAs are websites that:
+
+- can be installed to a smartphone, tablet, or computer
+- can run offline
+- can do various other device-related things
+
+They struggle to gain traction due to iOS-related hurdles, but the idea of making an app that can be installed and run offline still sounds really nice to me. So I have that happening in this project.
+
+At this stage, the app just installs to the device - it doesn't run offline yet.
+
+This is made possible by these files:
+
+- [src/serviceWorkerRegistration.js](./src/serviceWorkerRegistration.js)
+- [src/service-worker.js](./src/service-worker.js)
+- [public/manifest.json](./public/manifest.json)
+
+The `manifest.json` file must be imported into our HTML file like so:
+
+```html
+		<!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+```
+The two `service*.js` files provide access to the browser APIs that enable PWA functionality. The `index.js` file imports the `serviceWorkerRegistration` code and runs it, establishing everything PWA-related that we need.
+
+However, PWAs - by default - create a pop-up that asks the user to install the website. We don't want that. So, the `App` component runs a `windowPWAPreventer()` function on load to stop that from happening. Users can use their browser menus to install the app when they want to, as PWA functionality updates the browser menus on its own to show an "Install ___..." or "Install app" option. 
+
+(We could also make buttons in the website to install the app, but it's just not really a major thing for this project so I've left that out.)
