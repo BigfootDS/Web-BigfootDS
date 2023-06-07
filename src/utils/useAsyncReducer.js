@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function useAsyncReducer(reducer, initState) {
 	// State within this hook is normal
 	// - state: stores the result of the reducer
-	// - setState: used by the dispatchState function to make reducer behave asychronously
+	// - setState: used by the dispatchState function to apply the reducer's result to state
 	let [state, setState] = useState(initState);
 	
 	// Passes the dispatched action to the reducer,
