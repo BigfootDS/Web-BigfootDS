@@ -48,6 +48,7 @@ export default function Account(props){
 				<div className="column">
 					<Link to="/account/signup" >{t("btn_create_new_account")}</Link>
 					<Link to="/account/login" >{t("btn_log_in")}</Link>
+					<p>Accounts are currently accessing data in the {process.env.NODE_ENV} environment.</p>
 				</div>
 				<div className="column">
 
