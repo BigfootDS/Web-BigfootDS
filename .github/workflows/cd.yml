@@ -36,6 +36,7 @@ jobs:
         env:
           CI: true
           NODE_ENV: production
+          SOME_CUSTOM_SECRET: ${{ secrets.SOME_CUSTOM_SECRET }}
       
       - name: Log build directory as a sanity check
         run: find -maxdepth 2 -type d -name 'build'

@@ -49,6 +49,7 @@ export default function Account(props){
 					<Link to="/account/signup" >{t("btn_create_new_account")}</Link>
 					<Link to="/account/login" >{t("btn_log_in")}</Link>
 					<p>Accounts are currently accessing data in the {process.env.NODE_ENV} environment.</p>
+					<p>Extra custom secret is: {process.env.SOME_CUSTOM_SECRET}</p>
 				</div>
 				<div className="column">
 
