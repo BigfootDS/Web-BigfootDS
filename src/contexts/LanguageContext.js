@@ -11,8 +11,8 @@ export const languages = {
 	}
 }
 
-const LanguageNameContext = createContext(defaultLanguage);
-const LanguageSelectorContext = createContext(defaultLanguage);
+export const LanguageNameContext = createContext(defaultLanguage);
+export const LanguageSelectorContext = createContext(defaultLanguage);
 
 export function useLanguageName(){
 	return useContext(LanguageNameContext);

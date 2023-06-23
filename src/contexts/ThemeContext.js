@@ -32,8 +32,8 @@ export const themes = {
 	}
 }
 
-const ThemeNameContext = createContext(defaultTheme);
-const ThemeSelectorContext = createContext(defaultTheme);
+export const ThemeNameContext = createContext(defaultTheme);
+export const ThemeSelectorContext = createContext(defaultTheme);
 
 export function useThemeName(){
 	return useContext(ThemeNameContext);
