@@ -1,0 +1,81 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const {colourName} = Astro.props;
+---
+
+<div class="social-links">
+
+	<a href="https://www.linkedin.com/company/bigfootds" target="_blank">
+		<span class="sr-only">Follow BigfootDS on LinkedIn</span>
+		<Icon 
+			name="simple-icons:linkedin" 
+			title="BigfootDS on LinkedIn" 
+			desc="BigfootDS on LinkedIn"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+			
+	<a href="https://github.com/BigfootDS" target="_blank">
+		<span class="sr-only">Follow BigfootDS on GitHub</span>
+		<Icon 
+			name="simple-icons:github" 
+			title="BigfootDS on Github" 
+			desc="BigfootDS on Github"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="https://bsky.app/profile/bigfootds.com" target="_blank">
+		<span class="sr-only">Follow BigfootDS on Bluesky</span>
+		<Icon 
+			name="simple-icons:bluesky" 
+			title="BigfootDS on Bluesky" 
+			desc="BigfootDS on Bluesky"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="mailto:contact@bigfootds.com" target="_blank">
+		<span class="sr-only">Email BigfootDS!</span>
+		<Icon 
+			name="simple-icons:mailboxdotorg" 
+			title="Email BigfootDS" 
+			desc="Email BigfootDS"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+</div>
+
+<style>
+
+	
+
+	
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: rgb(var(--gray));
+	}
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
+
+	@media (max-width: 720px) {
+		header {
+			nav {
+				.social-links {
+					display: none;
+				}
+			}
+			
+		}
+		
+	}
+</style>

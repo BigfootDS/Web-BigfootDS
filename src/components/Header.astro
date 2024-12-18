@@ -1,0 +1,98 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+import SocialLinks from './SocialLinks.astro';
+---
+
+<header>
+	<nav>
+		<h2>
+			<img class="headerLogo" alt="BigfootDS logo" src="/BigfootDSLogo_512.png" />
+			<a href="/">{SITE_TITLE}</a>
+		</h2>
+		<div class="internal-links">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+		</div>
+		
+		<SocialLinks />
+	</nav>
+</header>
+<style>
+	header {
+		nav {
+			h2 {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.headerLogo {
+					max-height: 5vh;
+				}
+			}
+		}
+	}
+
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background: light-dark(white, var(--theme-950));
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		position: sticky;
+		z-index: 1;
+		top: 0;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a {
+		padding: 1em 0.5em;
+		color: light-dark(var(--theme-950), var(--theme-100));
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: light-dark(var(--theme-950), var(--theme-100));
+	}
+	.social-links,
+	.social-links a {
+		display: flex;
+	}
+	@media (max-width: 720px) {
+		header {
+			nav {
+				.social-links {
+					display: none;
+				}
+
+				width: 100%;
+				padding: 0;
+
+				h2 {
+					padding-top: 1em;
+					padding-bottom: 1em;
+				}
+
+				.internal-links {
+					a {
+						padding: 0.1em;
+					}
+				}
+			}
+			
+		}
+	}
+</style>
