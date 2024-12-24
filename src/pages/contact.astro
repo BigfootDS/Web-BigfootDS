@@ -1,15 +1,28 @@
 ---
 import Layout from "../layouts/BlogPost.astro";
+import aboutHeader from "../assets/images/headers/AstroAboutHeader.png";
+
 ---
 
 <Layout
 	title="Contact BigfootDS"
-	description="Learn about what BigfootDS is, how it started, who is involved, and more. BigfootDS is an Australian studio that - nowadays - does software development. But it wasn't always that way!"
-	pubDate={new Date()}
-	heroImage="/images/headers/AstroAboutHeader.png"
+	description="Find BigfootDS on other social media platforms, as well as access some of their email addresses to contact BigfootDS directly."
+	heroImage={aboutHeader.src}
 >
-	BigfootDS (or Bigfoot Design Studios, and officially as BigfootDS PTY LTD)
-	is an Australian-made multimedia studio.
+	Please use these email addresses for their appropriate purposes:
+
+	<ul>
+
+		<li>
+			<a href="mailto:support@bigfootds.com">Support Enquiries</a>
+		</li>
+
+		<li>
+			<a href="mailto:contact@bigfootds.com">Business Enquiries</a>
+		</li>
+
+	</ul>
 	
-	</div>
+	
 </Layout>
+
