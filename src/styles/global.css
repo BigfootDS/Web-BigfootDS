@@ -192,6 +192,13 @@ hr {
 	nav>.social-links {
 		display: none;
 	}
+
+	.projectCardContainer {
+		
+		section {
+			width: 100% !important; 
+		}
+	}
 }
 
 .sr-only {

@@ -1,0 +1,71 @@
+---
+import Image from "astro/components/Image.astro";
+import type { ProjectData } from "../consts";
+const projectData: ProjectData = Astro.props;
+
+let maincapsulePath = `../assets/images/projects/${projectData.abbreviation}/maincapsule.jpg`;
+const mainCapsule = import(maincapsulePath);
+
+interface Props extends ProjectData {};
+
+
+console.log(projectData);
+---
+
+
+
+<section class="projectCard">
+	<div class="coverContainer">
+		<Image src={mainCapsule} alt={`${projectData.title} hero image.`}/>
+	</div>
+	<div>
+		<h2 class="projectCardTitle">{projectData.title}</h2>
+
+	</div>
+	<div>
+		{projectData.releaseYear ? <h5>Available {projectData.releaseYear}</h5> : <br />}
+		<div class="projectLinks">
+			{projectData.platforms && projectData.platforms.map((platformEntry) => {
+				return <a class="projectLinkButton" href={platformEntry.url}>
+					{platformEntry.name}
+				</a>
+			})}
+		</div>
+		<h5>Type: {projectData.type.toLocaleUpperCase()}</h5>
+		<p>{projectData.tagline}</p>
+	</div>
+</section>
+
+<style>
+	.projectCard {
+		display: flex;
+		flex-direction: column;
+		padding: 25px;
+		background-color: var(--theme-900);
+		text-align: center;
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 2em;
+		}
+
+		
+	}
+
+	.projectLinks {
+		display: flex;
+		justify-content: center;
+		gap: 1%;
+		.projectLinkButton {
+			text-align: center;
+			font-family: "combinedNoto", sans-serif;
+			width: 30%;
+			padding: 2px;
+			background-color: var(--theme-500);
+			color: white;
+			text-decoration: none;
+		}
+	}
+
+	
+</style>
