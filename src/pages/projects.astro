@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+import aboutHeader from "../assets/images/headers/AstroAboutHeader.png";
+import { dataGamesBackburner, dataGamesReleased, dataGamesWip, dataAppsWip, dataPackagesReleased, type ProjectData } from "../consts";
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<Layout
+	title="Projects"
+	description="Learn about what BigfootDS has been building lately. This includes videogames, general software, and even tools or libraries or packages for other developers to use in their own projects."
+	heroImage={aboutHeader.src}
+	pubDate={new Date(Date.now())}
+>
+	<p>Learn about what BigfootDS has been building lately. This includes videogames, general software, and even tools or libraries or packages for other developers to use in their own projects.</p>
+
+	<section class="released">
+		<div>
+			<h1>Released & Available</h1>
+		</div>
+		<div class="projectCardContainer">
+			{[...dataGamesReleased, ...dataPackagesReleased].map((dataObj: ProjectData) => {
+				return <ProjectCard {...dataObj} />
+			})}
+		</div>
+	</section>
+
+	<section class="wip">
+		<div>
+			<h1>Coming Soon</h1>
+		</div>
+		<div class="projectCardContainer">
+			{[...dataGamesWip, ...dataAppsWip , ...dataGamesBackburner].map((dataObj: ProjectData) => {
+				return <ProjectCard {...dataObj} />
+			})}
+		</div>
+	</section>
+	
+</Layout>
+
+<style>
+	.projectCardContainer {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		
+		.projectCard {
+			margin: 1%;
+			width: 30%;
+		}
+	}
+
+	
+
+</style>

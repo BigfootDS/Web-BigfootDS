@@ -1,0 +1,113 @@
+---
+import { Icon } from 'astro-icon/components'
+
+---
+
+<div class="social-links">
+
+	<a href="https://www.linkedin.com/company/bigfootds" target="_blank">
+		<span class="sr-only">Follow BigfootDS on LinkedIn</span>
+		<Icon 
+			name="simple-icons:linkedin" 
+			title="BigfootDS on LinkedIn" 
+			desc="BigfootDS on LinkedIn"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+			
+	<a href="https://github.com/BigfootDS" target="_blank">
+		<span class="sr-only">Follow BigfootDS on GitHub</span>
+		<Icon 
+			name="simple-icons:github" 
+			title="BigfootDS on Github" 
+			desc="BigfootDS on Github"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="https://bsky.app/profile/bigfootds.com" target="_blank">
+		<span class="sr-only">Follow BigfootDS on Bluesky</span>
+		<Icon 
+			name="simple-icons:bluesky" 
+			title="BigfootDS on Bluesky" 
+			desc="BigfootDS on Bluesky"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="https://www.youtube.com/channel/UC5dK-u9Ar91WPphpur_MYMA" target="_blank">
+		<span class="sr-only">Follow BigfootDS on YouTube</span>
+		<Icon 
+			name="simple-icons:youtube" 
+			title="BigfootDS on YouTube" 
+			desc="BigfootDS on YouTube"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="https://www.facebook.com/BigfootDS" target="_blank">
+		<span class="sr-only">Follow BigfootDS on Facebook</span>
+		<Icon 
+			name="simple-icons:facebook" 
+			title="BigfootDS on Facebook" 
+			desc="BigfootDS on Facebook"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="https://www.instagram.com/bigfootds/" target="_blank">
+		<span class="sr-only">Follow BigfootDS on Instagram</span>
+		<Icon 
+			name="simple-icons:instagram" 
+			title="BigfootDS on Instagram" 
+			desc="BigfootDS on Instagram"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+	<a href="https://store.steampowered.com/developer/bigfootds" target="_blank">
+		<span class="sr-only">Follow BigfootDS on Steam</span>
+		<Icon 
+			name="simple-icons:steam" 
+			title="BigfootDS on Steam" 
+			desc="BigfootDS on Steam"
+			aria-hidden="true" width="32" height="32"  
+		/>
+	</a>
+
+
+
+</div>
+
+<style>
+
+	
+
+	
+
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: rgb(var(--gray));
+	}
+	.social-links a:hover {
+		color: rgb(var(--gray-dark));
+	}
+
+	@media (max-width: 720px) {
+		header {
+			nav {
+				.social-links {
+					display: none;
+				}
+			}
+			
+		}
+		
+	}
+</style>

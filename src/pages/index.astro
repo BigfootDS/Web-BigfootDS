@@ -1,0 +1,35 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={""} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>You found Bigfoot!</h1>
+			<p>
+				Welcome to the official BigfootDS website, where you can learn more about our games and software projects.
+			</p>
+			<p>
+				You can also keep up to date with any articles we've posted, over in <a href="/news">the News section</a>.
+			</p>
+			<p>
+				Or, you can learn more about BigfootDS, over in <a href="/about">the About section</a>.
+			</p>
+			<p>
+				You can dive deeper into our work on the <a href="/projects">the Projects section</a>, too!
+			</p>
+			<p>
+				And of course, feel free to check us out on social media platforms or contact us using the links shown below.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>

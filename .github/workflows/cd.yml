@@ -1,4 +1,4 @@
-name: CD - ReactJS Build & Deploy
+name: CD - Astro Build & Deploy
 
 on:
   push:
@@ -23,9 +23,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js LTS
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
 
@@ -39,16 +39,16 @@ jobs:
           REACT_APP_SOME_CUSTOM_SECRET: ${{ secrets.SOME_CUSTOM_SECRET }}
       
       - name: Log build directory as a sanity check
-        run: find -maxdepth 2 -type d -name 'build'
+        run: find -maxdepth 2 -type d -name 'dist'
 
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload ReactJS build folder
-          path: './build'
+          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
     

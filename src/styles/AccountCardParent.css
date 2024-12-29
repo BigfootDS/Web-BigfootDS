@@ -1,9 +1,0 @@
-.accountCardParent {
-	display: flex;
-	flex-direction: column;
-	background-color: var(--dark);
-	padding: 5%;
-}
-
-
-

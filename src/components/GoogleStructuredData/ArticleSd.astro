@@ -1,0 +1,26 @@
+---
+
+const {title, heroImage, pubDate, updatedDate} = Astro.props;
+
+console.log(heroImage);
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "NewsArticle",
+	"headline": title,
+	"image": [
+	new URL(heroImage, "https://bigfootds.com/")
+	 ],
+	"datePublished": pubDate,
+	"dateModified": updatedDate,
+	"author": [
+		  {
+		  "@type": "Person",
+		  "name": "BigfootDS",
+		  "url": "https://bigfootds.com/about/"
+		  }
+	  ]
+  })}>
+	
+</script>

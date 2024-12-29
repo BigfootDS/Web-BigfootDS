@@ -1,0 +1,75 @@
+---
+import {Image} from "astro:assets";
+import type { ProjectData } from "../consts";
+const projectData: ProjectData = Astro.props;
+
+const projectImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/projects/*/*.{jpeg,jpg,png,gif}');
+
+let maincapsulePath = `/src/assets/images/projects/${projectData.abbreviation}/maincapsule.jpg`;
+
+interface Props extends ProjectData {};
+
+
+// console.log(projectData);
+// console.log(projectImages);
+if (!projectImages[maincapsulePath]) throw new Error(`"${maincapsulePath}" does not exist in glob: "/src/assets/images/projects/*.{jpeg,jpg,png,gif}"`);
+
+---
+
+
+
+<section class="projectCard">
+	<div class="coverContainer">
+		<Image src={projectImages[maincapsulePath]()} alt={`${projectData.title} hero image.`}/>
+	</div>
+	<div>
+		<h2 class="projectCardTitle">{projectData.title}</h2>
+
+	</div>
+	<div>
+		{projectData.releaseYear ? <h5>Available {projectData.releaseYear}</h5> : <br />}
+		<div class="projectLinks">
+			{projectData.platforms && projectData.platforms.map((platformEntry) => {
+				return <a class="projectLinkButton" href={platformEntry.url}>
+					{platformEntry.name}
+				</a>
+			})}
+		</div>
+		<h5>Type: {projectData.type.toLocaleUpperCase()}</h5>
+		<p>{projectData.tagline}</p>
+	</div>
+</section>
+
+<style>
+	.projectCard {
+		display: flex;
+		flex-direction: column;
+		padding: 25px;
+		background-color: var(--theme-900);
+		text-align: center;
+		h2 {
+			width: 100%;
+			text-align: center;
+			font-size: 2em;
+		}
+
+		
+	}
+
+	.projectLinks {
+		display: flex;
+		justify-content: center;
+		gap: 1%;
+		.projectLinkButton {
+			text-align: center;
+			font-family: "combinedNoto", sans-serif;
+			width: 30%;
+			padding: 2px;
+			background-color: var(--theme-500);
+			color: white;
+			text-decoration: none;
+		}
+	}
+
+	
+</style>
