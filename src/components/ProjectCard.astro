@@ -1,5 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
+import {Image} from "astro:assets";
 import type { ProjectData } from "../consts";
 const projectData: ProjectData = Astro.props;
 
@@ -10,8 +10,8 @@ let maincapsulePath = `/src/assets/images/projects/${projectData.abbreviation}/m
 interface Props extends ProjectData {};
 
 
-console.log(projectData);
-console.log(projectImages);
+// console.log(projectData);
+// console.log(projectImages);
 if (!projectImages[maincapsulePath]) throw new Error(`"${maincapsulePath}" does not exist in glob: "/src/assets/images/projects/*.{jpeg,jpg,png,gif}"`);
 
 ---

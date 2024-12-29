@@ -1,0 +1,105 @@
+---
+
+const keywords = [
+    "Game Development",
+    "Software Engineering",
+    "Virtual Reality", "VR",
+    "Augmented Reality", "AR",
+	"Mixed Reality", "XR", "MR",
+    "Mobile Games",
+    "PC Games",
+    "Console Games",
+    "Unity Engine",
+    "Unreal Engine",
+    "C#", "ASP.NET","dotnet",
+    "Python Scripting",
+    "Game Design",
+    "3D Modeling",
+    "Animation Software",
+    "Audio Engineering",
+    "Agile Development",
+    "Project Management",
+    "Online Gaming Platforms",
+    "Mobile App Development",
+    "Game Analytics",
+    "Cross-Platform Development",
+    "eSports",
+    "Cloud Computing",
+    "DevOps",
+    "Software Licensing",
+    "Mobile Optimization",
+    "Cross-Device Compatibility",
+    "Game Console Integration",
+    "Online Services Development",
+	"indiedev",
+	"indie game","indiegamedev", "gamedev",
+	"australia", "australian", "australian gamedev",
+	"nintendo", "xbox", "nintendo switch", "steam", "android", "google play", "steamvr"
+];
+
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	
+	"name": "BigfootDS",
+	"legalName":"BigfootDS PTY LTD",
+	"alternateName":"BigfootDS PTY LTD",
+	"duns":"75-090-2771",
+	"email":"contact@bigfootds.com",
+	"sameAs": ["https://bigfootds.com/about/"],
+	"keywords":keywords.join(","),
+	"description":"Australian software development studio with a focus on gamedev and webdev.",
+	"location":"Sydney, New South Wales, Australia",
+	"image": "/BigfootDSLogo_512.png",
+	"logo":"/BigfootDSLogo_512.png",
+	"owns":[
+		{
+			"@type":"VideoGame",
+			"name":"Planet Protector VR",
+			"description":"Defend your city from alien invaders in this colorful virtual reality game! Aim, shoot, and protect your planet for as long as you can!",
+			"gamePlatform":"https://store.steampowered.com/app/656320/Planet_Protector_VR/",
+			"url":"https://store.steampowered.com/app/656320/Planet_Protector_VR/",
+			"trailer":"https://www.youtube.com/watch?v=XTjMiBAlKGg",
+			"numberOfPlayers":{
+				"value":1,
+				"maxValue":1,
+				"minValue":1
+			},
+			"offers":[
+				{
+					"@type":"Offer",
+					"priceCurrency":"AUD",
+					"price":"6.50"
+				}
+			]
+		},
+		{
+			"@type":"VideoGame",
+			"name":"Patron Simulator",
+			"description":"Become the ultimate patron of power in your own fantasy world! Build your gathering of followers, manipulate the mortal realm and grow your godhood to become the highest power in reality.",
+			"numberOfPlayers":{
+				"maxValue":8,
+				"minValue":1
+			},
+		},
+		{
+			"@type":"SoftwareApplication",
+			"name":"SuperCamo",
+			"description":"Camo-inspired ODM for NeDB, built specifically for BigfootDS' needs.",
+			"url":"https://www.npmjs.com/package/@bigfootds/supercamo",
+			"isAccessibleForFree":true
+		}
+	],
+	"potentialAction":{
+		"@type":"ReadAction",
+		"target":{
+			"@type":"EntryPoint",
+			"urlTemplate":"https://bigfootds.com"
+		}
+	},
+
+  })}>
+	
+</script>

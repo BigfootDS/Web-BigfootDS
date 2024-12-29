@@ -5,16 +5,21 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
+import ArticleSd from '../../components/GoogleStructuredData/ArticleSd.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={"News"} description={SITE_DESCRIPTION} />
+		<ArticleSd title={title} heroImage={heroImage} pubDate={pubDate} updatedDate={updatedDate} />
 		<style>
 			main {
 				width: 960px;
