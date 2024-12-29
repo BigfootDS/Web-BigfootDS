@@ -3,20 +3,24 @@ import Image from "astro/components/Image.astro";
 import type { ProjectData } from "../consts";
 const projectData: ProjectData = Astro.props;
 
-let maincapsulePath = `../assets/images/projects/${projectData.abbreviation}/maincapsule.jpg`;
-const mainCapsule = import(maincapsulePath);
+const projectImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/projects/*/*.{jpeg,jpg,png,gif}');
+
+let maincapsulePath = `/src/assets/images/projects/${projectData.abbreviation}/maincapsule.jpg`;
 
 interface Props extends ProjectData {};
 
 
 console.log(projectData);
+console.log(projectImages);
+if (!projectImages[maincapsulePath]) throw new Error(`"${maincapsulePath}" does not exist in glob: "/src/assets/images/projects/*.{jpeg,jpg,png,gif}"`);
+
 ---
 
 
 
 <section class="projectCard">
 	<div class="coverContainer">
-		<Image src={mainCapsule} alt={`${projectData.title} hero image.`}/>
+		<Image src={projectImages[maincapsulePath]()} alt={`${projectData.title} hero image.`}/>
 	</div>
 	<div>
 		<h2 class="projectCardTitle">{projectData.title}</h2>
