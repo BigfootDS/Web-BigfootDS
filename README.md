@@ -4,7 +4,7 @@ HTML, CSS, JS, and other files relevant to the BigfootDS website.
 
 This is currently deployed to:
 
-- [web-staging.bigfootds.dev](https://web-staging.bigfootds.dev/)
+- [bigfootds.com](https://bigfootds.com/)
 
 ## Purpose
 
