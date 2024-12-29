@@ -1,0 +1,54 @@
+name: CD - Astro Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+# Sets permissions missed by the web GUI
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+
+jobs:
+  build:
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Build ReactJS app
+        run: |
+          npm install
+          npm run build --if-present
+        env:
+          CI: true
+          NODE_ENV: production
+          REACT_APP_SOME_CUSTOM_SECRET: ${{ secrets.SOME_CUSTOM_SECRET }}
+      
+      - name: Log build directory as a sanity check
+        run: find -maxdepth 2 -type d -name 'dist'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload ReactJS build folder
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+    
