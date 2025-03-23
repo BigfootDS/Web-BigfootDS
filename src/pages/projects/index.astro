@@ -1,25 +1,27 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-import ArticleSd from '../../components/GoogleStructuredData/ArticleSd.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import ArticleSd from "../../components/GoogleStructuredData/ArticleSd.astro";
 
-const posts = (await getCollection('projectPages')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = await getCollection("projectPages");
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
-
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={"Projects"} description={SITE_DESCRIPTION} />
-		<ArticleSd title={title} heroImage={heroImage} pubDate={pubDate} updatedDate={updatedDate} />
+		<ArticleSd
+			title={title}
+			heroImage={heroImage}
+			pubDate={pubDate}
+			updatedDate={updatedDate}
+		/>
 		<style>
 			main {
 				width: 960px;
@@ -94,19 +96,55 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<section>
+				<h1>Available Now:</h1>
 				<ul>
 					{
-						posts.map((post) => (
-							<li>
-								<a href={`/projects/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
+						posts
+							.filter((post) => post.data.pubDate !== undefined)
+							.sort(
+								(a, b) =>
+									b.data.pubDate.valueOf() -
+									a.data.pubDate.valueOf()
+							)
+							.map((post) => (
+								<li>
+									<a href={`/projects/${post.id}/`}>
+										<img
+											width={720}
+											height={360}
+											src={post.data.heroImage}
+											alt=""
+										/>
+										<h4 class="title">{post.data.title}</h4>
+										<p class="date">
+											<FormattedDate
+												date={post.data.pubDate}
+											/>
+										</p>
+									</a>
+								</li>
+							))
+					}
+				</ul>
+
+				<h1>Coming Soon:</h1>
+				<ul>
+					{
+						posts
+							.filter((post) => post.data.pubDate == undefined)
+							.map((post) => (
+								<li>
+									<a href={`/projects/${post.id}/`}>
+										<img
+											width={720}
+											height={360}
+											src={post.data.heroImage}
+											alt=""
+										/>
+										<h4 class="title">{post.data.title}</h4>
+									</a>
+								</li>
+							))
 					}
 				</ul>
 			</section>

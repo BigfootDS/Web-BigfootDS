@@ -1,0 +1,105 @@
+---
+title: 'TCG Set Designer'
+description: 'Create and organise your TCG cards, sets, and more!'
+heroImage: '/projects/TCGSD/TSD-OpenGraph-Banner.png'
+---
+
+import ComingSoon from "../../components/ComingSoonWarning.astro";
+
+The TCG Set Designer (TCGSD) is a tool for designing TCG sets, expansions, and other collections of cards.
+
+<ComingSoon />
+
+## Quick Info
+
+- [GitHub Repository.](https://github.com/BigfootDS/tcg-set-designer/)
+- [Documentation Website.](https://tcgsetdesigner.com/)
+
+
+## The what
+
+The TCG Set Designer (TCGSD) is a tool for designing TCG sets, expansions, and other collections of cards.
+
+It is not a tool for simulating TCG gameplay, just a design management tool.
+
+## Installation
+
+There are multiple ways to install this project.
+
+### Installation as a Docker application
+
+The recommended way to install and use the project is as a multi-container Docker application, as described below.
+
+<details>
+
+<summary>Installation as a Docker application</summary>
+
+Here is an example Docker Compose file:
+
+```yml
+name: TCG Set Designer
+services:
+  backend:
+    image: ghcr.io/bigfootds/tcg-set-designer-api:latest
+    container_name: tcgsd-api
+    ports:
+      - 55000:55000
+    restart: unless-stopped
+  frontend:
+    image: ghcr.io/bigfootds/tcg-set-designer-web:latest
+    container_name: tcgsd-web
+    ports:
+      - 5000:80
+    environment:
+      - APP_ENV_PREFIX=VITE_
+      - VITE_BACKEND_NETWORK_HOSTNAME=localhost
+      - VITE_BACKEND_NETWORK_PORT=55000
+    restart: unless-stopped
+```
+
+The website interface is accessible through your browser. If you're running this Docker application on the same machine that you're intending to access and use it from, then you can visit `http://localhost:5000` if you're using the above file. 
+
+If you're intending to run this Docker application in a shared network (e.g. an office, studio, or other multi-computer environment), then you may want to change the value of `VITE_BACKEND_NETWORK_HOSTNAME` from `localhost` to the local IP address of the computer running the containers. 
+
+There's some other configuration that can be done in each container as well, through the environment variables of each container.
+
+</details>
+
+Visit [this page](https://tcgsetdesigner.com/guides/installation/docker/) for more detail.
+
+
+### Installation as a standalone executable 
+
+Not all operating systems are supported by the standalone executable, but if Docker seems crazy to you - you can try out the standalone executable as described below.
+
+<details>
+
+<summary>Installation as a standalone executable</summary>
+
+1. **Download the relevant installation files.**
+
+Grab the latest release file relevant to your operating system from this page: 
+
+- [Latest Release of the TCG Set Designer App](https://github.com/BigfootDS/tcg-set-designer-app/releases/latest)
+	- `.exe` files are for Windows
+	- `.deb` files are for Debian-based Linux distributions (e.g. Ubuntu, Linux Mint)
+
+2. **Run the downloaded file.**
+
+If you grabbed a "portable" file, it will run in place - no further installation steps are necessary. You may want to manually move it somewhere that you know you won't delete it from!
+
+If you grabbed an "installer" file, it will run an installation process to automatically move the app to your operating system's application directory. Follow the installer prompts to complete the installation.
+
+3. **Use the app.**
+
+Enjoy!
+
+</details>
+
+Visit [this page](https://tcgsetdesigner.com/guides/installation/standalone/) for more detail.
+
+## Additional Repositories
+
+- [Front-end web app](https://github.com/BigfootDS/tcg-set-designer-web)
+- [Back-end API](https://github.com/BigfootDS/tcg-set-designer-api)
+- [Standalone executable](https://github.com/BigfootDS/tcg-set-designer-app)
